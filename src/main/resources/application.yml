@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: guava-spring-boot-demo
+server:
+  port: 8081
+
+rate:
+  count: 10
