@@ -27,6 +27,7 @@ repositories {
 
 dependencies {
     compile group: 'com.google.guava', name: 'guava', version: '18.0'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
