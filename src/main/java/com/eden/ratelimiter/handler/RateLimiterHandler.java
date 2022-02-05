@@ -1,6 +1,6 @@
-package com.eden.guavaspringbootdemo.utils;
+package com.eden.ratelimiter.handler;
 
-import com.eden.guavaspringbootdemo.properties.RateLimiterProperties;
+import com.eden.ratelimiter.properties.RateLimiterProperties;
 import com.google.common.util.concurrent.RateLimiter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,17 +11,12 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class RateLimiterUtils {
+public class RateLimiterHandler extends AbstractRateLimiter {
 
-    @Autowired
-    RateLimiterProperties rateLimiterProperties;
-
-
-    public  RateLimiter  getRateLimiter(){
+    @Override
+    public RateLimiter getRateLimiter(){
         RateLimiter rateLimiter = RateLimiter.create(rateLimiterProperties.getCount());
         return rateLimiter;
     }
-
-
 
 }

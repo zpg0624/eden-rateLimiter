@@ -1,0 +1,17 @@
+package com.eden.ratelimiter;
+
+import com.eden.ratelimiter.properties.AccessLimitProperties;
+import com.eden.ratelimiter.properties.RateLimiterProperties;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
+@SpringBootApplication
+@EnableConfigurationProperties({RateLimiterProperties.class, AccessLimitProperties.class})
+public class RateLimiterApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(RateLimiterApplication.class, args);
+    }
+
+}

@@ -1,8 +1,11 @@
 spring:
   application:
-    name: guava-spring-boot-demo
+    name: eden-rateLimiter
 server:
   port: 8081
 
 rate:
   count: 10
+access:
+  permits: 1
+  timeout: 1

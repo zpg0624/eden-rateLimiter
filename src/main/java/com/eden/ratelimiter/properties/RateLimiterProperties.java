@@ -1,4 +1,4 @@
-package com.eden.guavaspringbootdemo.properties;
+package com.eden.ratelimiter.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -12,7 +12,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Data
 public class RateLimiterProperties {
 
+    /**
+     * 每秒生成令牌數
+     */
     private Integer count;
-
 
 }
