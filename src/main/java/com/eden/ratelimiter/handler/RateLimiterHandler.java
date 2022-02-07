@@ -1,8 +1,6 @@
 package com.eden.ratelimiter.handler;
 
-import com.eden.ratelimiter.properties.RateLimiterProperties;
 import com.google.common.util.concurrent.RateLimiter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,6 +11,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class RateLimiterHandler extends AbstractRateLimiter {
 
+    /**
+     * 单机版限流
+     * @return
+     */
     @Override
     public RateLimiter getRateLimiter(){
         RateLimiter rateLimiter = RateLimiter.create(rateLimiterProperties.getCount());

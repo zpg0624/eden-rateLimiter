@@ -28,6 +28,9 @@ repositories {
 dependencies {
     // https://mvnrepository.com/artifact/com.google.guava/guava
     compile group: 'com.google.guava', name: 'guava', version: '23.0'
+    compile 'org.springframework.boot:spring-boot-starter-data-redis'
+    compile 'org.apache.commons:commons-pool2'
+    compile 'org.apache.commons:commons-lang3'
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'

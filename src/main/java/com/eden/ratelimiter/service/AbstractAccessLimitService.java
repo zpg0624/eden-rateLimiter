@@ -1,5 +1,6 @@
 package com.eden.ratelimiter.service;
 
+import com.eden.ratelimiter.annotation.Limit;
 import com.eden.ratelimiter.handler.RateLimiterHandler;
 import com.eden.ratelimiter.properties.AccessLimitProperties;
 import com.google.common.util.concurrent.RateLimiter;
@@ -26,5 +27,7 @@ public abstract class AbstractAccessLimitService {
         return rateLimiter;
     }
 
-    public abstract boolean tryAcquire();
+    public abstract boolean executeSingleRateLimit();
+
+    public abstract void executeRedisDistributedRateLimit(Limit limitAnnotation);
 }
