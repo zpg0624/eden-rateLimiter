@@ -44,11 +44,12 @@ public class AccessLimitService extends AbstractAccessLimitService {
 
     /**
      * 分布式redis做限流
-     * @param limitAnnotation
+     * @param limitParamDto
      */
     @SneakyThrows
     @Override
-    public void executeRedisDistributedRateLimit(Limit limitAnnotation)  {
+    public void executeRedisDistributedRateLimit(RateLimitParamDto limitParamDto)  {
+        final Limit limitAnnotation = limitParamDto.getLimitAnnotation();
         LimitType limitType = limitAnnotation.limitType();
         String key = rateLimitBuildProvider.determineKey(RateLimitParamDto.of("executeRedisDistributedRateLimit", limitAnnotation, limitType));
         List<String> keys = Arrays.asList(StringUtils.join(limitAnnotation.prefix(), key));

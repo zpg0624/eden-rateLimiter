@@ -1,6 +1,7 @@
 package com.eden.ratelimiter.service;
 
 import com.eden.ratelimiter.annotation.Limit;
+import com.eden.ratelimiter.dto.RateLimitParamDto;
 import com.eden.ratelimiter.handler.AbstractRateLimiter;
 import com.eden.ratelimiter.properties.AccessLimitProperties;
 import com.eden.ratelimiter.provider.RateLimitBuildProvider;
@@ -36,5 +37,5 @@ public abstract class AbstractAccessLimitService {
 
     public abstract boolean executeSingleRateLimit();
 
-    public abstract void executeRedisDistributedRateLimit(Limit limitAnnotation);
+    public abstract void executeRedisDistributedRateLimit(RateLimitParamDto limitParamDto);
 }
