@@ -1,7 +1,7 @@
 package com.eden.ratelimiter.service;
 
-import com.eden.ratelimiter.RequestUtil;
 import com.eden.ratelimiter.annotation.Limit;
+import com.eden.ratelimiter.dto.RateLimitParamDto;
 import com.eden.ratelimiter.enums.LimitType;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -50,9 +50,9 @@ public class AccessLimitService extends AbstractAccessLimitService {
     @Override
     public void executeRedisDistributedRateLimit(Limit limitAnnotation)  {
         LimitType limitType = limitAnnotation.limitType();
-        String key = RequestUtil.determineKey("executeRedisDistributedRateLimit", limitAnnotation, limitType);
+        String key = rateLimitBuildProvider.determineKey(RateLimitParamDto.of("executeRedisDistributedRateLimit", limitAnnotation, limitType));
         List<String> keys = Arrays.asList(StringUtils.join(limitAnnotation.prefix(), key));
-        String luaScript =  RequestUtil.buildLuaScript();
+        String luaScript =  rateLimitBuildProvider.buildScript();
         RedisScript<Number> redisScript = new DefaultRedisScript<>(luaScript, Number.class);
         Number count = redisTemplate.execute(redisScript, keys, limitAnnotation.count(),  limitAnnotation.period());
         if (Objects.isNull(count) || count.intValue() > limitAnnotation.count()) {
